@@ -26,10 +26,13 @@ import 'package:google_maps_demo/address_notifier.dart';
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Text('value: ${notifier.mapAddress}',
+                          style: Theme.of(context).textTheme.bodyLarge),
+                      SizedBox(height: 30,),
                       ValueListenableBuilder(
                         valueListenable: notifier,
                           builder: (context, notify, child){
-                          return Text('Address: ${notify.toString()}');
+                          return Text('Address: ${notifier.mapAddress}');
                           },
                          ),
                       SizedBox(height: 20,),
@@ -43,8 +46,8 @@ import 'package:google_maps_demo/address_notifier.dart';
                             // setState(() {
                             //   _address = addresses.first.addressLine.toString();
                             // });
-                            notifier.setAddress(addresses.first.addressLine.toString());
-                            print('Address: ${addresses.length} : ${addresses.first.addressLine}');
+                            notifier.setAddress(addresses.first.countryName.toString()+ ": " + addresses.first.addressLine.toString());
+                            print('Address: ${addresses.first.countryCode} : ${addresses.first.addressLine}');
                           },
                           child: Container(
                             height: 40,
