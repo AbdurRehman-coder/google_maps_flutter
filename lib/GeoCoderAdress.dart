@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-// import 'package:geocoder/geocoder.dart';
-import 'package:flutter_geocoder/geocoder.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_demo/address_notifier.dart';
   class GeoCoderAddress extends StatefulWidget {
     const GeoCoderAddress({Key? key}) : super(key: key);
@@ -40,14 +39,16 @@ import 'package:google_maps_demo/address_notifier.dart';
                         padding: const EdgeInsets.all(18.0),
                         child: GestureDetector(
                           onTap: ()async{
-                            /// from coordinates
-                            final coordinates = Coordinates(34.0055484, 71.4739244);
-                            var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
-                            // setState(() {
-                            //   _address = addresses.first.addressLine.toString();
-                            // });
-                            notifier.setAddress(addresses.first.countryName.toString()+ ": " + addresses.first.addressLine.toString());
-                            print('Address: ${addresses.first.countryCode} : ${addresses.first.addressLine}');
+                            /// Address from Coordinates [geocoding package]
+                            List<Placemark> placeMark = await placemarkFromCoordinates(34.09099, 71.145752);
+                            print('placeMark: ${placeMark}');
+                            notifier.setAddress(placeMark.first.toString());
+                            
+                            /// from coordinates [geocoder package]
+                            // final coordinates = Coordinates(34.0055484, 71.4739244);
+                            // var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+                            // notifier.setAddress(addresses.first.countryName.toString()+ ": " + addresses.first.addressLine.toString());
+                            // print('Address: ${addresses.first.countryCode} : ${addresses.first.addressLine}');
                           },
                           child: Container(
                             height: 40,
@@ -66,14 +67,15 @@ import 'package:google_maps_demo/address_notifier.dart';
                         padding: const EdgeInsets.all(18.0),
                         child: GestureDetector(
                           onTap: ()async{
-                            /// From query
-                            final query = 'Canal Town Peshawar, Khyber Pakhtunkhwa, Pakistan' ;
-                            final address = await Geocoder.local.findAddressesFromQuery(query);
-                            // setState(() {
-                            //   _address = address.first.coordinates.toString();
-                            // });
-                            notifier.setAddress(address.first.coordinates.toString());
-                             print('Address: ${address.length} : ${address.first.addressLine}');
+                            /// Find Coordinates [GeoCoding package]
+                            List<Location> location = await locationFromAddress('Canal Town Peshawar, Khyber Pakhtunkhwa, Pakistan');
+                            print('Location: ${location}');
+                            notifier.setAddress(location.first.latitude.toString() + ": " + location.first.longitude.toString());
+                            /// From query [geocoder package]
+                            // final query = 'Canal Town Peshawar, Khyber Pakhtunkhwa, Pakistan' ;
+                            // final address = await Geocoder.local.findAddressesFromQuery(query);
+                            // notifier.setAddress(address.first.coordinates.toString());
+                            //  print('Address: ${address.length} : ${address.first.addressLine}');
                           },
                           child: Container(
                             height: 40,

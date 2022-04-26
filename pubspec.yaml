@@ -36,9 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   # Google Maps
   google_maps_flutter: ^2.1.3
+  geocoding: ^2.0.4
   # User for forward and reverse Geo address coding
 #  geocoder: ^0.2.1
-  flutter_geocoder: ^0.2.2-nullsafety
+#  flutter_geocoder: ^0.2.2-nullsafety
 
 dev_dependencies:
   flutter_test:
