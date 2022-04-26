@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_demo/GeoCoderAdress.dart';
 import 'package:google_maps_demo/Home_Screen.dart';
+import 'package:google_maps_demo/getCurrentPositiion.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: HomeScreen(),
-      home: GeoCoderAddress(),
+      // home: GeoCoderAddress(),
+      home: GetCurrentPostion(),
     );
   }
 }
