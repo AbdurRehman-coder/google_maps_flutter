@@ -17,7 +17,9 @@ final Completer<GoogleMapController> _controller = Completer();
 
 /// initial CameraPosition
 const CameraPosition _kCamPosition =
-    CameraPosition(target: LatLng(34.0055484, -120.4009244), zoom: 14.0);
+    CameraPosition(
+        zoom: 14.0,
+        target: LatLng(34.0055484, -120.4009244), );
 
 /// Markers
 List<Marker> _markers = [
@@ -82,10 +84,10 @@ class _GetCurrentPostionState extends State<GetCurrentPostion> {
                 print(
                     'longitude: ${value.longitude}, latitude: ${value.latitude}');
 
-                final camerPosition = CameraPosition(
+                final cameraPosition = CameraPosition(
                     target: LatLng(value.latitude, value.longitude), zoom: 15);
                 GoogleMapController controller = await _controller.future;
-                controller.animateCamera(CameraUpdate.newCameraPosition(camerPosition));
+                controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
 
               });
               /// Get Last Known Location
