@@ -41,6 +41,7 @@ dependencies:
   http: ^0.13.4
   # Used to get device id
   uuid: ^3.0.6
+  custom_info_window: ^1.0.1
   # User for forward and reverse Geo address coding
 #  geocoder: ^0.2.1
 #  flutter_geocoder: ^0.2.2-nullsafety

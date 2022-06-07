@@ -22,12 +22,13 @@ class _CustomMarkersScreenState extends State<CustomMarkersScreen> {
   zoom: 14,
   bearing: 34.323235);
 
+  /// List of Images from local Assets
   List<String> listOfImages = [
     'images/bicycle.png', 'images/car.png', 'images/car1.png',
     'images/car2.png', 'images/delivery-truck.png', 'images/hatchback.png',
     'images/motorcycle.png'
   ];
-
+  /// List of markers
   final List<Marker> _markers = [];
   /// List of Coordinates
   final List<LatLng> latLngList = const <LatLng>[
@@ -42,8 +43,8 @@ class _CustomMarkersScreenState extends State<CustomMarkersScreen> {
     super.initState();
     load();
   }
+  /// function that will convert images into custom marker icon
   load() async{
-
     /// add latLng into markerLists
     for(int i = 0; i < listOfImages.length; i++){
       markerIcon = await getBytesFromAsset(listOfImages[i], 50);
@@ -73,6 +74,9 @@ class _CustomMarkersScreenState extends State<CustomMarkersScreen> {
             _markers,
 
           ),
+          compassEnabled: true,
+          indoorViewEnabled: true,
+          mapToolbarEnabled: true,
 
 
         ),
@@ -82,8 +86,11 @@ class _CustomMarkersScreenState extends State<CustomMarkersScreen> {
 
   Future<Uint8List> getBytesFromAsset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
+    print('data \n ${data}');
     ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(), targetWidth: width);
+    print('Codec \n ${codec}');
     ui.FrameInfo fi = await codec.getNextFrame();
+    print('Fi \n ${fi}');
     return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!.buffer.asUint8List();
   }
 }
