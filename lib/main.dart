@@ -4,6 +4,7 @@ import 'package:google_maps_demo/Home_Screen.dart';
 import 'package:google_maps_demo/custom_info_window.dart';
 import 'package:google_maps_demo/custom_markers_screen.dart';
 import 'package:google_maps_demo/getCurrentPositiion.dart';
+import 'package:google_maps_demo/polygone_googleMap.dart';
 import 'package:google_maps_demo/search_places_api.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CustomMarkerInfoWindow(),
+      home: PolygonOnGoogleMap(),
     );
   }
 }

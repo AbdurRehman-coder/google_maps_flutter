@@ -27,7 +27,8 @@ class _CustomMarkerInfoWindowState extends State<CustomMarkerInfoWindow> {
   final CameraPosition _kCameraPosition = const CameraPosition(
       target: LatLng(33.6941, 72.9734),
       zoom: 14,
-      bearing: 34.323235);
+      // bearing: 34.323235,
+  );
 
   /// List of Images from local Assets
   List<String> listOfImages = [
@@ -120,7 +121,7 @@ class _CustomMarkerInfoWindowState extends State<CustomMarkerInfoWindow> {
             onCameraMove: (position){
               _customInfoWindowController.onCameraMove;
             },
-            onTap: (_latLng) {
+            onTap: (position) {
               _customInfoWindowController.hideInfoWindow;
               setState((){});
             },
@@ -128,69 +129,6 @@ class _CustomMarkerInfoWindowState extends State<CustomMarkerInfoWindow> {
               _customInfoWindowController.googleMapController = controller;
             },
             markers: Set.from(_markers),
-            // markers: {
-            //   Marker(
-            //       markerId: MarkerId('1'),
-            //     position: _latLng,
-            //
-            //     onTap: (){
-            //         _customInfoWindowController.addInfoWindow!(
-            //           Column(
-            //             children: [
-            //               Expanded(
-            //                 child: Container(
-            //                   decoration: BoxDecoration(
-            //                     color: Colors.blue,
-            //                     borderRadius: BorderRadius.circular(4),
-            //                   ),
-            //                   child: Padding(
-            //                     padding: const EdgeInsets.all(8.0),
-            //                     child: Column(
-            //                       children: [
-            //                         Row(
-            //                           mainAxisAlignment: MainAxisAlignment.center,
-            //                           children: [
-            //                             Icon(
-            //                               Icons.account_circle,
-            //                               color: Colors.white,
-            //                               size: 30,
-            //                             ),
-            //                             SizedBox(
-            //                               width: 8.0,
-            //                             ),
-            //                             Text(
-            //                               "I am here",
-            //                               style:
-            //                               Theme.of(context).textTheme.headline6?.copyWith(
-            //                                 color: Colors.white,
-            //                               ),
-            //                             ),
-            //                           ],
-            //                         ),
-            //                         Text('Custom info Window')
-            //                       ],
-            //                     ),
-            //                   ),
-            //                   width: double.infinity,
-            //                   height: double.infinity,
-            //                 ),
-            //               ),
-            //               // Triangle.isosceles(
-            //               //   edge: Edge.BOTTOM,
-            //               //   child: Container(
-            //               //     color: Colors.blue,
-            //               //     width: 20.0,
-            //               //     height: 10.0,
-            //               //   ),
-            //               // ),
-            //             ],
-            //           ),
-            //
-            //           _latLng,
-            //         );
-            //     }
-            //   )
-            // }
           ),
           CustomInfoWindow(
               controller: _customInfoWindowController,
