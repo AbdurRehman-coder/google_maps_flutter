@@ -42,6 +42,13 @@ dependencies:
   # Used to get device id
   uuid: ^3.0.6
   custom_info_window: ^1.0.1
+  flutter_background_geolocation: ^4.7.0
+  shared_preferences: ^2.0.15
+  location: ^4.4.0
+
+  # package by Uzair Leo
+#  easy_geofencing: ^0.2.0
+
   # User for forward and reverse Geo address coding
 #  geocoder: ^0.2.1
 #  flutter_geocoder: ^0.2.2-nullsafety

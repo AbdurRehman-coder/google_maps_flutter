@@ -52,6 +52,7 @@ class _PolygonOnGoogleMapState extends State<PolygonOnGoogleMap> {
         initialCameraPosition: _kCameraPosition,
         polygons: _polygons,
 
+
       ),
     );
   }

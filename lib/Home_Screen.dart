@@ -48,7 +48,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
     /// initial Camera position for Map
     static const CameraPosition _kinitCameraPosition =  CameraPosition(
         target: LatLng(34.0055484, 71.4739244),
-        zoom: 14.0,
+        zoom: 10.0,
     );
     static const CameraPosition _kLake = CameraPosition(
           bearing: 192.8334901395799,
@@ -73,6 +73,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
         body: GoogleMap(
           initialCameraPosition: _kinitCameraPosition,
           mapType: MapType.hybrid,
+
           onMapCreated: (GoogleMapController controller){
             _controller.complete(controller);
          },
